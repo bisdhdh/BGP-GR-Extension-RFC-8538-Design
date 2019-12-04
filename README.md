@@ -4,7 +4,7 @@ Design for Notification Message Support for BGP Graceful Restart-RFC-8538
 
 1. Problem Statement:
 
-BGP GR implementation in FRR is as per RFC 4724 and limits the usage of BGP Graceful Restart to BGP messages only. 
+	BGP GR implementation in FRR is as per RFC 4724 and limits the usage of BGP Graceful Restart to BGP messages only. 
 For many classes of errors, BGP must send a NOTIFICATION message and reset the peering session to handle the error 
 condition.  The BGP Graceful Restart mechanism defined in RFC 4724 requires that normal BGP procedures defined in 
 RFC 4271 be followed when a NOTIFICATION message is sent or received, there by loosing all the routes and flapping 
@@ -12,21 +12,21 @@ reachability.
 
 2. Objective:
 
-* The primary objective is to enhance the Helper capability for BGP speaking routes. This is achieved by allowing
+	* The primary objective is to enhance the Helper capability for BGP speaking routes. This is achieved by allowing
 the BGP speaker to avoid flapping reachability and continue forwarding while the BGP speaker restarts the session
 to handle errors detected in BGP.
 
-* RFC 8538 updates  RFC 4724 by defining an extension that permits the Graceful Restart procedures to be performed 
+	* RFC 8538 updates  RFC 4724 by defining an extension that permits the Graceful Restart procedures to be performed 
 when the BGP speaker receives a BGP NOTIFICATION message or the Hold Time expires. RFC 8538 defines a new subcode
 for BGP Cease NOTIFICATION messages. This  new subcode is needed to requests a full session restart instead of a 
 Graceful Restart.
 
-* When a BGP session is reset, both speakers operate as "Receiving Speakers", and they retain each other’s routes.
+	* When a BGP session is reset, both speakers operate as "Receiving Speakers", and they retain each other’s routes.
 
-* When a BGP session HOLDTIME expires, both speakers operate as "Receiving Speakers", and they retain each other’s 
+	* When a BGP session HOLDTIME expires, both speakers operate as "Receiving Speakers", and they retain each other’s 
 routes.
 
-* The functionality can be defeated by sending a BGP Cease NOTIFICATION message with the Hard Reset subcode. If a 
+	* The functionality can be defeated by sending a BGP Cease NOTIFICATION message with the Hard Reset subcode. If a 
 Hard Reset is used, a full session reset is performed for that neighbor.
 
 3. Solution:
