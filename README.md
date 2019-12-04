@@ -68,4 +68,4 @@ router.
 		So the bottom line is, bgp_stop() would be evenbgp_clear_stale_routetually get called with PEER_STATUS_NSF_WAIT set in this flow. All the house keeping is done in this flow. However if BGP GR is enabled, it does some special processing like start the restart and the stale path timer.
 
 	* Define new Hard Reset Notification. This involves writing new encoder and decoder functionality of the new Hard Reset Notification.
-	* As suggested in RFC 8538, hard reset notification should be sent from all the places listed below in the "Low Level Design" section.
+	* As suggested in [RFC 8538](https://tools.ietf.org/html/rfc8538), hard reset notification should be sent from all the places listed below in the "Low Level Design" section.
