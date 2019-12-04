@@ -30,6 +30,7 @@ routes.
 Hard Reset is used, a full session reset is performed for that neighbor.
 
 3. Solution:
+
 3.1. High Level Design:
 
 * The new BGP GR capability, the "N" bit much be sent in the BGP open message from the sending router and the receiving
@@ -38,4 +39,11 @@ router must be capability of processing the new capability.  So this involves ch
 * Both the sender and the receiver must fall back to the procedure mention in RFC 4724, when the above capability RFC 8538 
 is administrative disable. This involves introducing a CLI knob to control this feature, both at the sender and receiver 
 router.
+
+* When any established BGP session under goes reset, the router must follow bgp graceful restart procedure of "Receiving Speaker", this includes both the sending and receiving router. So when a router sends or receives a notification message,  all notification except "hard reset", qualifies for "Graceful Cease" i.e. follow the procedure of  "Receiving Speaker". However whenever, any "Hard Reset" notification send or received, the router must follow normal procedure of reseting the session as mention in RFC 4271. This involves changes in both at the sender and the receiver side.
+
+* Similar functionality changes will have to be done for HOLDTIME expiry i.e. when HOLDTIME expires, both speakers operate as "Receiving Speakers", and they retain each other’s routes.
+
+* BGP GR Peer Down Detection Flow would under go some change in-order to implement the above points.
+
 
