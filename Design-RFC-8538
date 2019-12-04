@@ -32,5 +32,8 @@ Hard Reset is used, a full session reset is performed for that neighbor.
 router must be capability of processing the new capability.  So this involves changes in both sender and receiving router.
 
 * Both the sender and the receiver must fall back to the procedure mention in RFC 4724, when the above capability RFC 8538 
-is administrative disable. This involves introducing a CLI knob to control this feature, both at the sender and receiver router.
+is administrative disable. This involves introducing a CLI knob to control this feature, both at the sender and receiver 
+router.
+
+
 
